@@ -9,7 +9,7 @@ namespace TennisScore
         [TestMethod]
         public void Love_All()
         {
-            var gameId = 1;
+            var gameId = 91;
 
             IRepository<Game> repo = Substitute.For<IRepository<Game>>();
             repo.GetGame(gameId).Returns(new Game {Id = gameId, FirstPlayerScore = 0, SecondPlayerScore = 0});
