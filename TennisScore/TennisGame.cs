@@ -6,6 +6,7 @@ namespace TennisScore
     public class TennisGame
     {
         private const string Deuce = "Deuce";
+        private const string AdvanceScoreResult = "Adv";
         private readonly IRepository<Game> _repo;
 
         private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
@@ -27,14 +28,11 @@ namespace TennisScore
 
             if (game.IsDifferentScore())
             {
-                if (game.FirstPlayerScore > 3 || game.SecondPlayerScore > 3)
+                if (game.IsReadyForWin())
                 {
-                    if (Math.Abs(game.FirstPlayerScore - game.SecondPlayerScore) == 1)
+                    if (game.IsAdvance())
                     {
-                        var advPlayer = game.FirstPlayerScore > game.SecondPlayerScore
-                            ? game.FirstPlayerName
-                            : game.SecondPlayerName;
-                        return advPlayer + " Adv";
+                        return game.AdvPlayer() + " " + AdvanceScoreResult;
                     }
                 }
                 return ScoreLookup(game);
