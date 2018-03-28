@@ -34,6 +34,8 @@ namespace TennisScore
                     {
                         return game.AdvPlayer() + " " + AdvanceScoreResult;
                     }
+
+                    return game.AdvPlayer() + " " + "Win";
                 }
                 return ScoreLookup(game);
             }

@@ -86,6 +86,13 @@ namespace TennisScore
             ScoreShouldBe("Bob Adv");
         }
 
+        [TestMethod]
+        public void SecondPlayer_Win()
+        {
+            GiveGame(3, 5, "Abby", "Bob");
+            ScoreShouldBe("Bob Win");
+        }
+
         private void GiveGame(int firstPlayerScore, int secondPlayerScore, string firstPlayerName,
             string secondPlayerName)
         {
