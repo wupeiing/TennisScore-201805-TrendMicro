@@ -28,11 +28,7 @@ namespace TennisScore
             {
                 return ScoreLookup(game);
             }
-            if (game.FirstPlayerScore == 1)
-            {
-                return "Fifteen All";
-            }
-            return "Love All";
+            return _scoreLookup[game.FirstPlayerScore] + " All";
         }
 
         private string ScoreLookup(Game game)
