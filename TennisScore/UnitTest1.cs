@@ -75,28 +75,28 @@ namespace TennisScore
         [TestMethod]
         public void FirstPlayer_Advance()
         {
-            _repository.GetGame(AnyGameId).Returns(new Game
-            {
-                Id = AnyGameId,
-                FirstPlayerScore = 4,
-                SecondPlayerScore = 3,
-                FirstPlayerName = "Abby"
-            });
+            GiveGame(4, 3, "Abby", "");
             ScoreShouldBe("Abby Adv");
         }
 
         [TestMethod]
         public void SecondPlayer_Advance()
         {
+            GiveGame(3, 4, "Abby", "Bob");
+            ScoreShouldBe("Bob Adv");
+        }
+
+        private void GiveGame(int firstPlayerScore, int secondPlayerScore, string firstPlayerName,
+            string secondPlayerName)
+        {
             _repository.GetGame(AnyGameId).Returns(new Game
             {
                 Id = AnyGameId,
-                FirstPlayerScore = 3,
-                SecondPlayerScore = 4,
-                FirstPlayerName = "Abby",
-                SecondPlayerName = "Bob"
+                FirstPlayerScore = firstPlayerScore,
+                SecondPlayerScore = secondPlayerScore,
+                FirstPlayerName = firstPlayerName,
+                SecondPlayerName = secondPlayerName
             });
-            ScoreShouldBe("Bob Adv");
         }
 
         private void ScoreShouldBe(string expected)
