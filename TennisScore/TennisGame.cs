@@ -15,6 +15,10 @@ namespace TennisScore
         {
             var game = this._repo.GetGame(gameId);
 
+            if (game.SecondPlayerScore == 1)
+            {
+                return "Love Fifteen";
+            }
             return "Love All";
         }
     }

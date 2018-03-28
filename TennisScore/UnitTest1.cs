@@ -23,6 +23,13 @@ namespace TennisScore
             ScoreShouldBe("Love All");
         }
 
+        [TestMethod]
+        public void Love_Fifteen()
+        {
+            GivenGame(0, 1);
+            ScoreShouldBe("Love Fifteen");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             Assert.AreEqual(expected, _tennisGame.ScoreResult(AnyGameId));
