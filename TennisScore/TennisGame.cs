@@ -23,6 +23,10 @@ namespace TennisScore
         {
             var game = this._repo.GetGame(gameId);
 
+            if (game.FirstPlayerScore == 1)
+            {
+                return "Fifteen Love";
+            }
             if (game.SecondPlayerScore > 0)
             {
                 return "Love" + " " + _scoreLookup[game.SecondPlayerScore];
