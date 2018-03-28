@@ -5,6 +5,7 @@ namespace TennisScore
 {
     public class TennisGame
     {
+        private const string Deuce = "Deuce";
         private readonly IRepository<Game> _repo;
 
         private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
@@ -28,6 +29,15 @@ namespace TennisScore
             {
                 return ScoreLookup(game);
             }
+            if (game.IsDeuce())
+            {
+                return Deuce;
+            }
+            return SameScore(game);
+        }
+
+        private string SameScore(Game game)
+        {
             return _scoreLookup[game.FirstPlayerScore] + " All";
         }
 

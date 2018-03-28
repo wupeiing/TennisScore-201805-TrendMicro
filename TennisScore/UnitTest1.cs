@@ -65,6 +65,13 @@ namespace TennisScore
             ScoreShouldBe("Fifteen All");
         }
 
+        [TestMethod]
+        public void Deuce()
+        {
+            GivenGame(3, 3);
+            ScoreShouldBe("Deuce");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             Assert.AreEqual(expected, _tennisGame.ScoreResult(AnyGameId));
