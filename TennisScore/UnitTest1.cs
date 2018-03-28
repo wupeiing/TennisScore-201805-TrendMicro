@@ -72,6 +72,19 @@ namespace TennisScore
             ScoreShouldBe("Deuce");
         }
 
+        [TestMethod]
+        public void FirstPlayer_Advance()
+        {
+            _repository.GetGame(AnyGameId).Returns(new Game
+            {
+                Id = AnyGameId,
+                FirstPlayerScore = 4,
+                SecondPlayerScore = 3,
+                FirstPlayerName = "Abby"
+            });
+            ScoreShouldBe("Abby Adv");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             Assert.AreEqual(expected, _tennisGame.ScoreResult(AnyGameId));
