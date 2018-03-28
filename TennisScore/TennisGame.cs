@@ -24,11 +24,16 @@ namespace TennisScore
         {
             var game = this._repo.GetGame(gameId);
 
-            if (game.FirstPlayerScore > 0 || game.SecondPlayerScore > 0)
+            if (game.IsDifferentScore())
             {
-                return _scoreLookup[game.FirstPlayerScore] + " " + _scoreLookup[game.SecondPlayerScore];
+                return ScoreLookup(game);
             }
             return "Love All";
+        }
+
+        private string ScoreLookup(Game game)
+        {
+            return _scoreLookup[game.FirstPlayerScore] + " " + _scoreLookup[game.SecondPlayerScore];
         }
     }
 }
